@@ -22,25 +22,12 @@ type service struct {
 // CreateConsignment - we created just one method on our service,
 // which is a create method, which takes a context and a request as an
 // argument, these are handled by the gRPC server.
-func (s *service) sayHello(ctx context.Context, name *pb.Name) (*pb.Response, error) {
-	fmt.Printf("hello %s", name.name)
-
-}
-
-type service struct {
-}
-
-// CreateConsignment - we created just one method on our service,
-// which is a create method, which takes a context and a request as an
-// argument, these are handled by the gRPC server.
-func (s *service) sayHello(ctx context.Context, name *pb.Name) (*pb.Response, error) {
-
-	return &pb.Response(&pb.Greeting{greeting_words: *name.name})
-
+func (s *service) SayHello(ctx context.Context, name *pb.Name) (*pb.Response, error) {
+	fmt.Printf("hello %s", name.Name)
+	return &pb.Response{GreetingWords: name.Name}, nil
 }
 
 func main() {
-
 	// Set-up our gRPC server.
 	lis, err := net.Listen("tcp", port)
 	if err != nil {

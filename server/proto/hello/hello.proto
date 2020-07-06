@@ -10,10 +10,6 @@ message Name {
   string name = 1;
 }
 
-message Greeting {
-  string greeting_words = 1;
-}
-
 message Response {
-  Greeting greeting = 1;
+  string greeting_words = 1;
 }
